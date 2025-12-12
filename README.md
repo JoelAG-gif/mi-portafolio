@@ -65,37 +65,50 @@ La interfaz fusiona un diseño minimalista con efectos visuales **RGB neón y es
 
 ## 💼 Proyectos Destacados
 
-
-
-## 💼 Proyectos Destacados
-
 ### 1. 📊 Dashboard de Análisis de Ventas (Retail)
 **Stack:** Power BI, DAX, Power Query, Data Modeling
 
-Tablero interactivo para análisis de rendimiento comercial y cumplimiento presupuestario.
-* **KPIs Clave:** Comparación entre tiendas y detección de productos críticos.
-* **Modelo Robusto:** Cálculos DAX avanzados para análisis temporal y rentabilidad.
+Tablero interactivo para el análisis de rendimiento comercial y cumplimiento presupuestario.
+* **Funcionalidad:** Identificación de KPIs clave, comparación de tiendas y detección de productos críticos.
+* **Tecnología:** Modelo de datos robusto y cálculos DAX avanzados.
 
 [📝 Ver Código](https://github.com/JoelAG-gif/Analisis-Ventas-PowerBI) | [🎥 Video Demo](https://drive.google.com/file/d/1f0ywkD6xU-9I4xeJ8Nc7twv-Icixaxb0/view?usp=sharing)
 
 ### 2. 🎮 Cyberpunk Features UI
-**Stack:** Angular, CSS3 Keyframes, Responsive Grid
+**Stack:** Angular, CSS3 Avanzado, Keyframe Animations, Responsive Design
 
-Interfaz moderna con estética Cyberpunk que demuestra dominio avanzado de CSS.
-* **Efectos Visuales:** Scan-lines, textos neón y animaciones de entrada.
-* **Arquitectura:** Componentes Standalone y diseño responsivo.
+Componente de interfaz moderna con estética Cyberpunk y alta complejidad visual.
+* **UI/UX:** Animaciones avanzadas (scan-lines, neón) y tipografías futuristas.
+* **Diseño:** Grid responsivo demostrando dominio en estilización y UX visual.
 
-[📝 Ver Código](https://github.com/JoelAG-gif/cyberpunk-ui.git) | [🎥 Video Demo](https://drive.google.com/file/d/1pMhSbItB_APaHT4vBXWfTzSk-i9fGa3V/view?usp=sharing) | [🌐 Ver Sitio](https://cyberpunk-ui-six.vercel.app)
+[📝 Ver Código](https://github.com/JoelAG-gif/cyberpunk-ui.git) | [🎥 Video Demo](https://drive.google.com/file/d/1pMhSbItB_APaHT4vBXWfTzSk-i9fGa3V/view?usp=sharing) | [🌐 Ver Sitio](https://cyberpunk-ui-six.vercel.app/)
 
 ### 3. 📱 App Móvil - Extintores Romero
-**Stack:** Android (Java), PHP, MySQL, Volley
+**Stack:** Android (Java), PHP, MySQL, Volley, Material Design
 
-Sistema integral para la gestión de seguridad y mantenimiento.
-* **Roles:** Admin, Técnico y Cliente.
-* **Funciones:** Gestión de inventario, seguimiento de mantenimiento y alertas de vencimiento.
+Sistema integral de gestión de seguridad con roles diferenciados (Admin, Técnico, Cliente).
+* **Funciones:** Compra de extintores, gestión de inventario y alertas automáticas de vencimiento.
+* **Flujo:** Solicitud y seguimiento de mantenimiento en tiempo real.
 
 [📝 Ver Código](https://github.com/JoelAG-gif/App-Extintores-Romero) | [🎥 Video Demo](https://drive.google.com/file/d/1xybv6MSLWf7iS80w5ca8MGPkGPYVXFwW/view?usp=sharing)
 
+### 4. 🛍️ AESI - Diseño UI/UX E-commerce
+**Stack:** Figma, UI/UX Design, Prototyping, Wireframing
+
+Sistema de diseño completo para una plataforma dual (Tienda Online + Panel Administrativo).
+* **Enfoque:** Usabilidad, flujos de compra claros e interfaz administrativa eficiente.
+* **CMS:** Diseño de panel para gestión de inventario y ventas.
+
+[📝 Ver Código](https://github.com/JoelAG-gif/UI-Design.git) | [🎨 Ver Prototipo Figma](https://www.figma.com/design/0BNJuNviTBVZyqapx9e3h9/AESI-Plataforma-de-Ecommerce?node-id=0-1&t=1wHye7tjWcEjJuoP-1)
+
+### 5. 🤝 AESI - Bolsa de Empleo Inclusiva
+**Stack:** Figma, UI/UX, Prototyping, User Flows
+
+Plataforma de reclutamiento diseñada con enfoque prioritario en la inclusión laboral.
+* **Accesibilidad:** Interfaz que conecta talento diverso con empresas para procesos equitativos.
+* **Roles:** Flujos completos de navegación para Candidatos y Reclutadores.
+
+[📝 Ver Código](https://github.com/JoelAG-gif/Bolsa-Empleo) | [🎨 Ver Prototipo Figma](https://www.figma.com/design/v8Bj39tsTIkHu0J3lDEGeA/AESI-Plataforma-de-postulaci%C3%B3n-de-empleo-web-inclusiva.?node-id=0-1&t=fQg1S9YDjvFf1lmW-1)
 
 
 ---
