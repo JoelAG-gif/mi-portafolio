@@ -7,11 +7,8 @@
 
 
 ![Angular](https://img.shields.io/badge/Angular-19-dd0031?style=for-the-badge&logo=angular)
-
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript)
-
 ![Power BI](https://img.shields.io/badge/Power_BI-Analyst-F2C811?style=for-the-badge&logo=powerbi)
-
 ![Android](https://img.shields.io/badge/Android-Java-3DDC84?style=for-the-badge&logo=android)
 
 
