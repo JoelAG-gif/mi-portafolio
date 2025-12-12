@@ -3,7 +3,6 @@ import { HomeComponent } from './components/home/home';
 import { ProjectsComponent } from './components/projects/projects';
 import { SkillsComponent } from './components/skills/skills';
 import { CertificatesComponent } from './components/certificates/certificates';
-import { ContactComponent } from './components/contact/contact';
 
 export const routes: Routes = [
   { 
@@ -22,10 +21,6 @@ export const routes: Routes = [
   { 
     path: 'certificados', 
     component: CertificatesComponent 
-  },
-  { 
-    path: 'contacto', 
-    component: ContactComponent 
   },
   { 
     path: '**', 
