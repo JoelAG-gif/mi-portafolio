@@ -120,7 +120,7 @@ Plataforma de reclutamiento diseñada con enfoque prioritario en la inclusión l
 | Área | Tecnologías |
 | :--- | :--- |
 | **Frontend** | Angular 19, TypeScript 5.6, Angular Material 18, SCSS, RxJS |
-| **Diseño UI/UX** | Figma, Prototyping, Wireframing, Design Systems, User Flows |
+| **Diseño UI/UX** | Figma|
 | **Data Analysis** | Power BI, DAX, Power Query, Data Modeling |
 | **Mobile** | Android (Java nativo), Volley Library |
 | **Backend** | PHP, MySQL (Base de datos relacional) |
