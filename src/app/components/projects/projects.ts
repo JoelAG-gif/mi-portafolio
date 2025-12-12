@@ -29,6 +29,7 @@ export class ProjectsComponent {
       tech: ['Power BI', 'DAX', 'Power Query', 'Data Modeling'],
       image: 'assets/ventas x tienda.png', 
       repoLink: 'https://github.com/JoelAG-gif/Analisis-Ventas-PowerBI',
+      demoLink: 'https://drive.google.com/file/d/1f0ywkD6xU-9I4xeJ8Nc7twv-Icixaxb0/view?usp=sharing',
     },
     {
       name: 'Cyberpunk Features UI',
@@ -46,6 +47,22 @@ export class ProjectsComponent {
       image: 'assets/appmovil.png', 
       repoLink: 'https://github.com/JoelAG-gif/App-Extintores-Romero',
       demoLink: 'https://drive.google.com/file/d/1xybv6MSLWf7iS80w5ca8MGPkGPYVXFwW/view?usp=sharing' 
+    },
+    {
+      name: 'AESI - Diseño UI/UX E-commerce',
+      description: 'Sistema de diseño completo para una plataforma dual: Tienda online para clientes y Panel Administrativo (CMS) para gestión de inventario. Enfocado en la usabilidad, flujos de compra claros y una interfaz administrativa eficiente.',
+      tech: ['Figma', 'UI/UX Design', 'Prototyping', 'Wireframing'],
+      image: 'assets/darshboard del administrador.png', 
+      repoLink: 'https://github.com/JoelAG-gif/UI-Design.git',
+      demoLink: 'https://www.figma.com/design/0BNJuNviTBVZyqapx9e3h9/AESI-Plataforma-de-Ecommerce?node-id=0-1&t=1wHye7tjWcEjJuoP-1' 
+    },
+    {
+      name: 'AESI - Bolsa de Empleo Inclusiva',
+      description: 'Plataforma de reclutamiento diseñada con enfoque en la inclusión laboral. Interfaz accesible que conecta talento diverso con empresas, facilitando procesos de selección equitativos. Incluye flujos completos para Candidatos y Reclutadores.',
+      tech: ['Figma', 'UI/UX', 'Prototyping', 'User Flows'],
+      image: 'assets/inicio.png', 
+      repoLink: 'https://github.com/JoelAG-gif/Bolsa-Empleo',
+      demoLink: 'https://www.figma.com/design/v8Bj39tsTIkHu0J3lDEGeA/AESI-Plataforma-de-postulaci%C3%B3n-de-empleo-web-inclusiva.?node-id=0-1&t=fQg1S9YDjvFf1lmW-1' 
     },
   ];
 }
