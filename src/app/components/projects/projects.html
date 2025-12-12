@@ -1,0 +1,67 @@
+<div class="projects-container container-fluid">
+  
+  <div class="header-section">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <p class="section-subtitle">Una selección de mis trabajos recientes en desarrollo y análisis de datos.</p>
+  </div>
+
+  <div class="projects-list">
+    
+    <div class="project-card" *ngFor="let project of projects">
+      
+      <div class="project-image-wrapper">
+        <img [src]="project.image" [alt]="project.name" class="project-img">
+        <div class="img-overlay"></div>
+      </div>
+
+      <div class="project-content">
+        
+        <div class="project-header">
+          <h3 class="project-title">{{ project.name }}</h3>
+          <div class="project-links">
+            <!-- Código (siempre visible) -->
+            <a [href]="project.repoLink" target="_blank" mat-icon-button title="Ver Código">
+              <mat-icon>code</mat-icon>
+            </a>
+            <!-- Demo Video (solo si existe) -->
+            <a *ngIf="project.demoLink" [href]="project.demoLink" target="_blank" mat-icon-button title="Ver Video Demo">
+              <mat-icon>play_circle</mat-icon>
+            </a>
+            <!-- Web (solo si existe) -->
+            <a *ngIf="project.webLink" [href]="project.webLink" target="_blank" mat-icon-button title="Visitar Sitio Web">
+              <mat-icon>language</mat-icon>
+            </a>
+          </div>
+        </div>
+
+        <p class="project-description">
+          {{ project.description }}
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-pill" *ngFor="let t of project.tech">{{ t }}</span>
+        </div>
+
+        <div class="project-actions">
+          <!-- Código (siempre visible) -->
+          <a [href]="project.repoLink" target="_blank" class="btn-code">
+            <mat-icon>github</mat-icon> Código
+          </a>
+          
+          <!-- Demo Video (solo si existe) -->
+          <a *ngIf="project.demoLink" [href]="project.demoLink" target="_blank" class="btn-demo">
+            <mat-icon>play_circle</mat-icon> Demo
+          </a>
+          
+          <!-- Web (solo si existe) -->
+          <a *ngIf="project.webLink" [href]="project.webLink" target="_blank" class="btn-web">
+            <mat-icon>language</mat-icon> Ver Sitio
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

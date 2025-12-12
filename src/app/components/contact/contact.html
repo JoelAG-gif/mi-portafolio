@@ -1,0 +1,37 @@
+<div class="contact-container d-flex flex-column align-items-center">
+  <h1>Contacto</h1>
+  <p>Estoy disponible para oportunidades laborales y proyectos. Envíame un mensaje directo.</p>
+
+  <mat-card class="contact-card col-12 col-lg-6">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form d-flex flex-column">
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Tu Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Ej: Pedro Arévalo">
+        <mat-error *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">El nombre es obligatorio.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tu Correo Electrónico</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Ej: correo@ejemplo.com">
+        <mat-error *ngIf="contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched">El correo es obligatorio.</mat-error>
+        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">Formato de correo inválido.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput formControlName="message" rows="5"></textarea>
+        <mat-error *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">El mensaje es obligatorio.</mat-error>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid || status === 'loading'">
+        <mat-spinner *ngIf="status === 'loading'" [diameter]="20"></mat-spinner>
+        <span *ngIf="status !== 'loading'">Enviar Mensaje</span>
+      </button>
+      
+      <div *ngIf="status === 'error'" class="message error-message">Error al enviar. Intenta de nuevo.</div>
+      <div *ngIf="status === 'success'" class="message success-message">¡Mensaje enviado con éxito!</div>
+      
+    </form>
+  </mat-card>
+</div>

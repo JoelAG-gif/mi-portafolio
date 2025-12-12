@@ -1,0 +1,183 @@
+/* ========================================= */
+/* VARIABLES CSS GLOBALES */
+/* ========================================= */
+
+/* TEMA OSCURO (Dark Mode) - Default */
+html:not(.light-theme) {
+  --background-color: #0F1115;
+  --card-background: #1A1D23;
+  --card-hover: #2A2E35;
+  --text-primary: #EAEAEA;
+  --text-secondary: #A1A1A1;
+  --primary-color: #5AA5FF;
+  --secondary-color: #7BC4FF;
+  --accent-color: #FFC857;
+  --border-color: #2A2E35;
+  --pill-background: rgba(90, 165, 255, 0.1);
+  --pill-border: rgba(90, 165, 255, 0.3);
+  --pill-hover: rgba(255, 200, 87, 0.2);
+}
+
+/* TEMA CLARO (Light Mode) */
+html.light-theme {
+  --background-color: #F7F9FC;
+  --card-background: #FFFFFF;
+  --card-hover: #E1E6EF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4D4D4D;
+  --primary-color: #2F74D0;
+  --secondary-color: #4AA8FF;
+  --accent-color: #FFB400;
+  --border-color: #E1E6EF;
+  --pill-background: rgba(47, 116, 208, 0.1);
+  --pill-border: rgba(47, 116, 208, 0.3);
+  --pill-hover: rgba(255, 180, 0, 0.2);
+}
+
+/* ========================================= */
+/* SISTEMA DE GRID Y RESPONSIVIDAD */
+/* ========================================= */
+.container-fluid {
+  width: 100%;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+}
+
+.row > * {
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-8 {
+    width: 66.66%;
+  }
+  .col-lg-6 {
+    width: 50%;
+  }
+  .col-lg-4 {
+    width: 33.33%;
+  }
+}
+
+/* ========================================= */
+/* ESPACIADO PARA NAVBAR */
+/* ========================================= */
+.main-content {
+  padding-top: 80px;
+}
+
+/* ========================================= */
+/* ESTILOS DE LA VENTANA MODAL (CERTIFICADO) */
+/* ========================================= */
+.custom-modal-container .mat-mdc-dialog-panel {
+  background-color: var(--card-background) !important;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.custom-modal-container h2,
+.custom-modal-container p,
+.custom-modal-container .mat-mdc-dialog-content {
+  color: var(--text-primary) !important;
+}
+
+.custom-modal-container button span {
+  color: var(--text-primary);
+}
+
+.custom-modal-container .mat-primary {
+  background-color: var(--pill-background) !important;
+  color: var(--accent-color) !important;
+  border: 1px solid var(--accent-color) !important;
+}
+
+.custom-modal-container .mat-warn {
+  color: #ff5252 !important;
+}
+
+/* ========================================= */
+/* TRANSICIONES SUAVES */
+/* ========================================= */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ========================================= */
+/* SCROLLBAR PERSONALIZADA */
+/* ========================================= */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* ========================================= */
+/* ANIMACIONES GLOBALES */
+/* ========================================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}

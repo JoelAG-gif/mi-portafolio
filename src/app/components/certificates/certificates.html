@@ -1,0 +1,31 @@
+<div class="certificates-container">
+  
+  <div class="header-section">
+    <h1>Mis Certificados y Cursos</h1>
+    <p>Estos cursos y certificaciones respaldan mis conocimientos técnicos en áreas clave de la Ingeniería de Sistemas.</p>
+  </div>
+
+  <div class="certificates-grid">
+    
+    <mat-card class="cert-card" *ngFor="let cert of certifications">
+      <div class="cert-content">
+        <mat-card-header>
+          <div mat-card-avatar class="cert-icon-wrapper">
+            <mat-icon>{{ cert.icon }}</mat-icon>
+          </div>
+          <div class="cert-texts">
+            <mat-card-title>{{ cert.title }}</mat-card-title>
+            <mat-card-subtitle>{{ cert.source }}</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        
+        <mat-card-actions>
+          <button mat-button class="cert-link" (click)="openCertificate(cert)">
+            Ver Credencial
+          </button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+
+  </div>
+</div>
