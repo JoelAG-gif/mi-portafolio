@@ -107,7 +107,7 @@
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 30px;
-    min-height: 35px;
+    min-height: 35px; /* Solo para el rol que cambia */
 }
 
 .hero-description {
@@ -177,6 +177,20 @@
 .social-pill:hover {
     background: var(--card-hover);
     transform: translateY(-2px);
+}
+
+/* Botón CV especial */
+.cv-pill {
+    background: var(--accent-color) !important;
+    color: var(--btn-cv-text) !important;
+    border: 1px solid var(--accent-color) !important;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cv-pill:hover {
+    background: var(--btn-cv-hover) !important;
+    transform: translateY(-2px) scale(1.05);
 }
 
 /* ========================================= */
@@ -331,6 +345,8 @@ html:not(.light-theme) {
     --border-color: #2A2E35;
     --pill-background: rgba(90, 165, 255, 0.1);
     --pill-border: rgba(90, 165, 255, 0.3);
+    --btn-cv-text: #1A1A1A;
+    --btn-cv-hover: #FFD470;
 }
 
 /* ========================================= */
@@ -348,6 +364,8 @@ html.light-theme {
     --border-color: #E1E6EF;
     --pill-background: rgba(47, 116, 208, 0.1);
     --pill-border: rgba(47, 116, 208, 0.3);
+    --btn-cv-text: #1A1A1A;
+    --btn-cv-hover: #FFC22E;
 }
 
 /* ========================================= */
