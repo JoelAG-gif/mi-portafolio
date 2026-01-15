@@ -23,6 +23,7 @@ export class SkillsComponent {
     { name: 'Power BI', icon: 'powerbi.png' }, 
     { name: 'Figma', icon: 'figma.png' },
     { name: 'Linux', icon: 'linux.png' }, 
+    { name: 'PHP', icon: 'PHP-logo.png' }, 
   ];
 
   softSkills = [

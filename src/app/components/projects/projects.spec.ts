@@ -13,7 +13,7 @@ describe('ProjectsComponent', () => {
     })
     .compileComponents();
     
-    // 2. Inicialización del Componente (DEBE IR DENTRO DEL beforeEach)
+    // 2. Inicialización del Componente 
     fixture = TestBed.createComponent(ProjectsComponent);
     component = fixture.componentInstance;
     await fixture.whenStable(); 

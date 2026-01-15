@@ -10,8 +10,8 @@ interface Project {
   tech: string[];
   image: string;
   repoLink: string;
-  demoLink?: string; // Opcional - Video de demostración
-  webLink?: string;  // Opcional - Página web funcional
+  demoLink?: string; 
+  webLink?: string;  
 }
 
 @Component({
