@@ -1,0 +1,181 @@
+---
+const certifications = [
+  { title: 'CCNA: Redes Empresariales, Seguridad y Automatización', source: 'Cisco Networking Academy', icon: 'router', link: '/assets/certificados/redes-empresariales.pdf' },
+  { title: 'CCNA: Fundamentos de Conmutación y Enrutamiento', source: 'Cisco Networking Academy', icon: 'wifi', link: '/assets/certificados/fundamentos-enrutamiento.pdf' },
+  { title: 'AWS Academy Graduate - Machine Learning NLP', source: 'AWS Academy', icon: 'cloud', link: '/assets/certificados/aws-machine-learning.pdf' },
+  { title: 'Fundamentos de Python 1', source: 'Python Institute', icon: 'code', link: '/assets/certificados/python1.pdf' },
+  { title: 'Partner: CLP - Advanced Programming in C', source: 'Cisco Networking Academy', icon: 'terminal', link: '/assets/certificados/clp-c.pdf' },
+  { title: 'Introducción a la Ciberseguridad', source: 'Cisco Networking Academy', icon: 'security', link: '/assets/certificados/ciberseguridad.pdf' },
+  { title: 'Fundamentos de IA con IBM SkillsBuild', source: 'IBM SkillsBuild', icon: 'smart_toy', link: '/assets/certificados/ia-ibm.pdf' },
+  { title: 'Introducción a la Ciencia de Datos', source: 'Cisco Networking Academy', icon: 'analytics', link: '/assets/certificados/data-science.pdf' },
+  { title: 'Introduction to IoT', source: 'Cisco Networking Academy', icon: 'settings_remote', link: '/assets/certificados/iot.pdf' },
+  { title: 'Conciencia Digital', source: 'Cisco Networking Academy', icon: 'fingerprint', link: '/assets/certificados/conciencia-digital.pdf' },
+];
+---
+
+<section class="certs-section">
+  <div class="section-header reveal">
+    <div class="section-label">// certificados</div>
+    <h2 class="section-title">Mis <span class="highlight">Certificaciones</span></h2>
+    <p class="section-sub">Cursos y certificaciones que respaldan mis conocimientos técnicos.</p>
+  </div>
+
+  <div class="certs-grid">
+    {certifications.map((cert, i) => (
+      <div class="cert-card reveal" style={`transition-delay:${i*0.06}s`}
+           data-link={cert.link} data-title={cert.title}>
+        <div class="cert-top">
+          <div class="cert-icon">
+            <span class="material-icons">{cert.icon}</span>
+          </div>
+          <div class="cert-number">0{i+1}</div>
+        </div>
+        <div class="cert-body">
+          <h3 class="cert-title">{cert.title}</h3>
+          <p class="cert-source">{cert.source}</p>
+        </div>
+        <button class="cert-btn" data-link={cert.link} data-title={cert.title}>
+          Ver Credencial <span class="material-icons" style="font-size:16px;vertical-align:middle">arrow_forward</span>
+        </button>
+        <div class="cert-shine"></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="pdf-modal-overlay hidden" id="cert-modal">
+  <div class="pdf-modal">
+    <div class="pdf-modal-header">
+      <h2 id="cert-modal-title">Certificado</h2>
+      <button class="pdf-modal-close" id="cert-close">&times;</button>
+    </div>
+    <div class="pdf-modal-body">
+      <iframe id="cert-iframe" src="" type="application/pdf" width="100%" height="100%">
+        <p>Tu navegador no puede mostrar este PDF.</p>
+      </iframe>
+    </div>
+    <div class="pdf-modal-footer">
+      <a id="cert-open-link" href="#" target="_blank" class="btn-open-tab">Abrir ↗</a>
+      <button class="btn-close-modal" id="cert-close2">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.certs-section {
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 48px;
+}
+
+.section-header { text-align:center; max-width:600px; }
+.section-label { font-family:monospace; font-size:0.85rem; color:var(--cyan,#00E5FF); opacity:0.7; margin-bottom:8px; }
+.section-title { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--text-primary); margin-bottom:12px; }
+.section-sub { font-size:1rem; color:var(--text-secondary); line-height:1.6; }
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+  width: 100%; max-width: 1060px;
+}
+
+.cert-card {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 24px;
+  background: var(--bg-card,rgba(10,15,30,0.85));
+  border: 1px solid var(--border,rgba(56,100,220,0.18));
+  border-radius: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.cert-card:hover {
+  border-color: var(--border-hover,rgba(82,160,255,0.5));
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,229,255,0.08);
+}
+.cert-card:hover .cert-shine { opacity: 1; }
+
+.cert-shine {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,229,255,0.04), transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.cert-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.cert-icon {
+  width: 38px; height: 38px;
+  background: var(--pill-bg,rgba(0,229,255,0.08));
+  border: 1px solid var(--pill-border,rgba(0,229,255,0.2));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cyan,#00E5FF);
+  transition: background 0.3s;
+}
+.cert-card:hover .cert-icon { background: rgba(0,229,255,0.14); }
+.cert-number {
+  font-family: 'Syne',sans-serif; font-size:1.5rem; font-weight:800;
+  color: var(--border,rgba(56,100,220,0.3));
+}
+
+.cert-body { flex: 1; }
+.cert-title {
+  font-family: 'Syne',sans-serif; font-size:0.92rem; font-weight:700;
+  color: var(--text-primary); line-height:1.4; margin-bottom:6px;
+}
+.cert-source { font-size:0.78rem; color:var(--text-muted,#3D5280); font-weight:500; }
+
+.cert-btn {
+  background: none; border: none; cursor: none;
+  color: var(--cyan,#00E5FF); font-size:0.82rem; font-weight:600;
+  font-family:'DM Sans',sans-serif;
+  padding: 0; text-align:left;
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: gap 0.2s, opacity 0.2s;
+  margin-top: auto;
+}
+.cert-btn:hover { gap: 8px; }
+</style>
+
+<script>
+  const modal = document.getElementById('cert-modal');
+  const iframe = document.getElementById('cert-iframe') as HTMLIFrameElement;
+  const titleEl = document.getElementById('cert-modal-title');
+  const openLink = document.getElementById('cert-open-link') as HTMLAnchorElement;
+
+  function openModal(link: string, title: string) {
+    if (link.startsWith('http')) { window.open(link,'_blank'); return; }
+    if (titleEl) titleEl.textContent = title;
+    if (iframe) iframe.src = link;
+    if (openLink) openLink.href = link;
+    modal?.classList.remove('hidden');
+  }
+  function closeModal() {
+    modal?.classList.add('hidden');
+    if (iframe) iframe.src = '';
+  }
+
+  document.querySelectorAll('.cert-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const el = btn as HTMLElement;
+      openModal(el.dataset.link||'', el.dataset.title||'');
+    });
+  });
+  document.querySelectorAll('.cert-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const el = card as HTMLElement;
+      openModal(el.dataset.link||'', el.dataset.title||'');
+    });
+  });
+
+  document.getElementById('cert-close')?.addEventListener('click', closeModal);
+  document.getElementById('cert-close2')?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', e => { if(e.target===modal) closeModal(); });
+</script>

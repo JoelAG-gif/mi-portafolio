@@ -1,0 +1,148 @@
+---
+const technicalSkills = [
+  { name: 'Angular', icon: 'angular.png' },
+  { name: 'React Native', icon: 'react-native.png' },
+  { name: 'Supabase', icon: 'supabase.png' },
+  { name: 'Expo go', icon: 'expo go.png' },
+  { name: 'Firebase', icon: 'firabase.png' },
+  { name: 'Python', icon: 'python.png' },
+  { name: 'SQL Server', icon: 'sqlserver.png' },
+  { name: 'PostgreSQL', icon: 'post.png' },
+  { name: 'Power BI', icon: 'powerbi.png' },
+  { name: 'PHP', icon: 'PHP-logo.png' },
+  { name: 'Figma', icon: 'figma.png' },
+  { name: 'C#', icon: 'shar.png' },
+  { name: 'Cisco Packet Tracer', icon: 'cisco.png' },
+  { name: 'Linux', icon: 'linux.png' },
+];
+
+const softSkills = [
+  { name: 'Proactivo', icon: 'flash_on' },
+  { name: 'Resolución de Problemas', icon: 'psychology' },
+  { name: 'Trabajo en Equipo', icon: 'group' },
+  { name: 'Liderazgo', icon: 'military_tech' },
+  { name: 'Aprendizaje Continuo', icon: 'book' },
+];
+---
+
+<section class="skills-section">
+  <div class="section-header reveal">
+    <div class="section-label">// habilidades</div>
+    <h2 class="section-title">Stack <span class="highlight">Técnico</span></h2>
+    <p class="section-sub">Tecnologías con las que construyo soluciones reales.</p>
+  </div>
+
+  <div class="skills-grid reveal" style="transition-delay:0.1s">
+    {technicalSkills.map((skill, i) => (
+      <div class="skill-card" style={`animation-delay:${i*0.05}s`}>
+        <div class="skill-icon-wrap">
+          <img src={`/assets/icons/${skill.icon}`} alt={skill.name} class="skill-icon" loading="lazy">
+        </div>
+        <span class="skill-name">{skill.name}</span>
+        <div class="skill-glow"></div>
+      </div>
+    ))}
+  </div>
+
+  <div class="section-header reveal" style="transition-delay:0.2s; margin-top:40px">
+    <div class="section-label">// soft skills</div>
+    <h2 class="section-title">Características <span class="highlight">Personales</span></h2>
+  </div>
+
+  <div class="soft-skills-row reveal" style="transition-delay:0.3s">
+    {softSkills.map(skill => (
+      <div class="soft-pill">
+        <span class="material-icons">{skill.icon}</span>
+        <span>{skill.name}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+.skills-section {
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 40px;
+}
+
+.section-header { text-align:center; max-width:600px; }
+.section-label { font-family:monospace; font-size:0.85rem; color:var(--cyan,#00E5FF); opacity:0.7; margin-bottom:8px; }
+.section-title { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--text-primary); margin-bottom:12px; }
+.section-sub { font-size:1rem; color:var(--text-secondary); line-height:1.6; }
+
+/* GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 16px;
+  width: 100%; max-width: 860px;
+}
+
+.skill-card {
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px; padding: 24px 16px;
+  background: var(--bg-card,rgba(10,15,30,0.85));
+  border: 1px solid var(--border,rgba(56,100,220,0.18));
+  border-radius: 14px; overflow: hidden;
+  cursor: default;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.skill-card:hover {
+  border-color: var(--border-hover,rgba(82,160,255,0.5));
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,229,255,0.1);
+}
+.skill-card:hover .skill-glow { opacity: 1; }
+
+.skill-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(0,229,255,0.06), transparent 70%);
+  opacity: 0; transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.skill-icon-wrap {
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+}
+.skill-icon { width:100%; height:100%; object-fit:contain; transition: transform 0.3s; }
+.skill-card:hover .skill-icon { transform: scale(1.1); }
+
+.skill-name {
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center; line-height: 1.3;
+  transition: color 0.3s;
+}
+.skill-card:hover .skill-name { color: var(--text-primary); }
+
+/* SOFT SKILLS */
+.soft-skills-row {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 12px;
+  max-width: 680px;
+}
+.soft-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 50px;
+  background: var(--pill-bg,rgba(0,229,255,0.08));
+  border: 1px solid var(--pill-border,rgba(0,229,255,0.2));
+  color: var(--cyan,#00E5FF);
+  font-size: 0.9rem; font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.25s;
+}
+.soft-pill:hover {
+  background: rgba(0,229,255,0.14);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,229,255,0.12);
+}
+
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: repeat(3,1fr); gap:12px; }
+}
+</style>

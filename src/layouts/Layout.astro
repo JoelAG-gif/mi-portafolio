@@ -1,0 +1,272 @@
+---
+interface Props { title?: string; }
+const { title = 'Portafolio - Joel' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portafolio de Jireh Aroni - Desarrollador Web Full Stack y Analista de Datos" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script is:inline>
+      const t = localStorage.getItem('theme') || 'dark';
+      if (t === 'light') document.documentElement.classList.add('light-theme');
+    </script>
+  </head>
+  <body>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <canvas id="bg-canvas"></canvas>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<script>
+  // ── CURSOR instantáneo ──────────────────────────────
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+  if (!isTouch) {
+    const dot  = document.getElementById('cursor-dot')!;
+    const ring = document.getElementById('cursor-ring')!;
+    let rx = 0, ry = 0, mx = 0, my = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px)`;
+    }, { passive: true });
+
+    (function moveRing() {
+      rx += (mx - rx) * 0.14;
+      ry += (my - ry) * 0.14;
+      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      requestAnimationFrame(moveRing);
+    })();
+
+    document.addEventListener('mouseover', e => {
+      const over = !!(e.target as HTMLElement).closest('a,button,[role="button"]');
+      dot.classList.toggle('hovering', over);
+      ring.classList.toggle('hovering', over);
+    });
+  }
+
+  // ── FONDO CON TRUENOS ──────────────────────────────
+  const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
+  const ctx    = canvas.getContext('2d')!;
+  const isLight = () => document.documentElement.classList.contains('light-theme');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  // ── Rayo: estructura recursiva ──
+  interface Bolt {
+    points: {x:number,y:number}[];
+    alpha:  number;
+    width:  number;
+    color:  string;
+    life:   number;   // frames que vive
+    maxLife:number;
+  }
+
+  const bolts: Bolt[] = [];
+
+  function generateLightning(
+    x1:number, y1:number,
+    x2:number, y2:number,
+    depth:number,
+    points:{x:number,y:number}[]
+  ) {
+    if (depth === 0) { points.push({x:x2,y:y2}); return; }
+    const mx = (x1+x2)/2 + (Math.random()-0.5) * (Math.abs(x2-x1) + Math.abs(y2-y1)) * 0.45;
+    const my = (y1+y2)/2 + (Math.random()-0.5) * 30;
+    generateLightning(x1,y1,mx,my,depth-1,points);
+    generateLightning(mx,my,x2,y2,depth-1,points);
+  }
+
+  function spawnBolt() {
+    const light = isLight();
+    // Origen: parte superior aleatoria
+    const startX = Math.random() * canvas.width;
+    const startY = -10;
+    // Fin: dos tercios hacia abajo con desvío
+    const endX   = startX + (Math.random()-0.5) * 300;
+    const endY   = canvas.height * (0.4 + Math.random() * 0.45);
+
+    const pts: {x:number,y:number}[] = [{x:startX, y:startY}];
+    generateLightning(startX, startY, endX, endY, 7, pts);
+
+    // Rayo principal
+    const mainColor = light
+      ? `rgba(22,163,74,`     // verde vivo
+      : `rgba(45,212,191,`;   // teal
+
+    bolts.push({
+      points: pts,
+      alpha: 1,
+      width: Math.random() * 1.5 + 1,
+      color: mainColor,
+      life: 0,
+      maxLife: 38 + Math.floor(Math.random() * 22),
+    });
+
+    // Ramas secundarias (30% de probabilidad)
+    if (Math.random() > 0.7 && pts.length > 6) {
+      const branchFrom = Math.floor(pts.length * (0.3 + Math.random() * 0.4));
+      const p = pts[branchFrom];
+      const bPts: {x:number,y:number}[] = [{x:p.x,y:p.y}];
+      const bEndX = p.x + (Math.random()-0.5) * 200;
+      const bEndY = p.y + 100 + Math.random() * 150;
+      generateLightning(p.x,p.y,bEndX,bEndY,5,bPts);
+      bolts.push({
+        points: bPts,
+        alpha: 0.65,
+        width: Math.random() * 0.8 + 0.4,
+        color: mainColor,
+        life: 0,
+        maxLife: 30,
+      });
+    }
+  }
+
+  function drawBolt(bolt: Bolt) {
+    const progress = bolt.life / bolt.maxLife;
+    // Fade in rápido, fade out suave
+    const alpha = progress < 0.2
+      ? (progress / 0.2) * bolt.alpha
+      : bolt.alpha * (1 - (progress - 0.2) / 0.8);
+
+    if (alpha <= 0 || bolt.points.length < 2) return;
+
+    // Glow exterior
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(bolt.points[0].x, bolt.points[0].y);
+    for (let i = 1; i < bolt.points.length; i++) {
+      ctx.lineTo(bolt.points[i].x, bolt.points[i].y);
+    }
+    ctx.strokeStyle = `${bolt.color}${(alpha * 0.25).toFixed(3)})`;
+    ctx.lineWidth   = bolt.width * 5;
+    ctx.lineCap     = 'round';
+    ctx.lineJoin    = 'round';
+    ctx.shadowColor = bolt.color + '1)';
+    ctx.shadowBlur  = 18;
+    ctx.stroke();
+
+    // Core brillante
+    ctx.beginPath();
+    ctx.moveTo(bolt.points[0].x, bolt.points[0].y);
+    for (let i = 1; i < bolt.points.length; i++) {
+      ctx.lineTo(bolt.points[i].x, bolt.points[i].y);
+    }
+    ctx.strokeStyle = `${bolt.color}${alpha.toFixed(3)})`;
+    ctx.lineWidth   = bolt.width;
+    ctx.shadowBlur  = 8;
+    ctx.stroke();
+
+    // Centro blanco brillante
+    ctx.beginPath();
+    ctx.moveTo(bolt.points[0].x, bolt.points[0].y);
+    for (let i = 1; i < bolt.points.length; i++) {
+      ctx.lineTo(bolt.points[i].x, bolt.points[i].y);
+    }
+    ctx.strokeStyle = `rgba(255,255,255,${(alpha * 0.7).toFixed(3)})`;
+    ctx.lineWidth   = bolt.width * 0.3;
+    ctx.shadowBlur  = 4;
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  // Partículas suaves de fondo (pocas, para no saturar)
+  const pts = Array.from({ length: 30 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    vx: (Math.random()-0.5)*0.18, vy: (Math.random()-0.5)*0.18,
+    r: Math.random()*1.2+0.3, o: Math.random()*0.25+0.05,
+  }));
+
+  let frameCount = 0;
+  // Intervalo entre rayos: entre 60 y 140 frames (~1-2.5 seg a 60fps)
+  let nextBolt = 28 + Math.floor(Math.random()*40);
+
+  function draw() {
+    const light = isLight();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Partículas de fondo
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width)  p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = light
+        ? `rgba(22,163,74,${p.o*0.5})`
+        : `rgba(45,212,191,${p.o})`;
+      ctx.fill();
+    });
+
+    // Orbe de fondo para profundidad
+    const orbs = light
+      ? [{ x:canvas.width*.1, y:canvas.height*.1, r:300, c:'rgba(22,163,74,0.08)' },
+         { x:canvas.width*.9, y:canvas.height*.9, r:260, c:'rgba(74,222,128,0.06)' }]
+      : [{ x:canvas.width*.1, y:canvas.height*.1, r:320, c:'rgba(20,184,166,0.07)' },
+         { x:canvas.width*.88,y:canvas.height*.85,r:280, c:'rgba(45,212,191,0.06)' }];
+
+    orbs.forEach(o => {
+      const gr = ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
+      gr.addColorStop(0,o.c); gr.addColorStop(1,'transparent');
+      ctx.fillStyle = gr;
+      ctx.beginPath(); ctx.arc(o.x,o.y,o.r,0,Math.PI*2); ctx.fill();
+    });
+
+    // Truenos
+    frameCount++;
+    if (frameCount >= nextBolt) {
+      spawnBolt();
+      // A veces viene otro rayo casi inmediato (doble relámpago)
+      if (Math.random() > 0.4) {
+        setTimeout(() => spawnBolt(), 80 + Math.random()*120);
+      }
+      nextBolt = frameCount + 25 + Math.floor(Math.random()*45);
+    }
+
+    // Dibujar y envejecer rayos
+    for (let i = bolts.length - 1; i >= 0; i--) {
+      drawBolt(bolts[i]);
+      bolts[i].life++;
+      if (bolts[i].life >= bolts[i].maxLife) bolts.splice(i, 1);
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  // ── SCROLL REVEAL ──────────────────────────────────
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        (e.target as HTMLElement).style.opacity = '1';
+        (e.target as HTMLElement).style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    (el as HTMLElement).style.opacity = '0';
+    (el as HTMLElement).style.transform = 'translateY(32px)';
+    (el as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    obs.observe(el);
+  });
+</script>

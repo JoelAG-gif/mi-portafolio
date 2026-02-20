@@ -1,0 +1,348 @@
+---
+---
+
+<section class="home-section">
+  <div class="hero-wrapper">
+
+    <div class="avatar-container reveal">
+      <div class="avatar-glow"></div>
+      <div class="avatar-ring"></div>
+      <img src="/assets/foto2.jpg" alt="Jireh Aroni" class="avatar-img">
+    </div>
+
+    <div class="hero-text reveal" style="transition-delay:0.1s">
+      <a href="https://wa.me/51966646415?text=Hola%20Jireh,%20vi%20tu%20portafolio."
+         target="_blank" class="hero-badge" id="hero-badge" style="opacity:0">
+        <span class="badge-dot"></span>
+        <span>Disponible para trabajar</span>
+        <span class="badge-arrow">↗</span>
+      </a>
+
+      <h1 class="hero-title">
+        <span id="display-name"></span><span class="cur" id="cursor-name">_</span>
+      </h1>
+
+      <p class="hero-subtitle" id="subtitle-el" style="opacity:0">
+        <span id="display-title"></span><span class="cur" id="cursor-title" style="display:none">_</span>
+      </p>
+
+      <p class="hero-role" id="role-el" style="opacity:0">
+        <span class="role-comment">// </span>
+        <span class="highlight" id="display-role"></span><span class="cur">_</span>
+      </p>
+
+      <p class="hero-desc" id="desc-el" style="opacity:0">
+        <span id="display-desc"></span>
+      </p>
+    </div>
+
+    <div class="social-row reveal" id="social-row" style="opacity:0;transition-delay:0.2s">
+      <a href="https://www.linkedin.com/in/jireharoni/" target="_blank" class="chip">
+        <span class="material-icons">work</span> LinkedIn
+      </a>
+      <a href="https://github.com/JoelAG-gif" target="_blank" class="chip">
+        <span class="material-icons">code</span> GitHub
+      </a>
+      <a href="mailto:jireharoni03@gmail.com" class="chip">
+        <span class="material-icons">email</span> Email
+      </a>
+      <button class="chip chip-cv" id="cv-btn">
+        <span class="material-icons">description</span> Ver CV
+      </button>
+    </div>
+  </div>
+
+  <!-- SOBRE MÍ -->
+  <div class="about-wrapper reveal" id="about-section" style="opacity:0;transition-delay:0.3s">
+    <div class="sec-label">// sobre mí</div>
+    <h2 class="sec-title">Un poco sobre <span class="highlight">mí</span></h2>
+    <div class="about-card">
+      <div class="about-text">
+        <p>
+              Mi nombre es <strong>Jireh Aroni</strong> y soy estudiante del 9.º ciclo de Ingeniería de Sistemas
+              Computacionales, con un fuerte enfoque en el desarrollo de software y la construcción de productos
+              digitales. A lo largo de mi formación académica, he desarrollado una sólida pasión por la tecnología,
+              especialmente por crear soluciones funcionales, bien estructuradas y pensadas para escalar.
+            </p>
+
+            <p>
+              He trabajado en proyectos académicos y personales utilizando tecnologías como
+              <strong>Angular</strong>, <strong>React Native</strong>, <strong> PHP</strong>,<strong> MySQL</strong>, <strong>Supabase </strong>y <strong>Power BI</strong>,
+              integrando bases de datos, lógica de negocio y diseño de interfaces modernas.
+              Me interesa comprender la arquitectura detrás de cada aplicación, optimizar procesos
+              y construir experiencias de usuario claras, eficientes y orientadas a resultados.
+            </p>
+
+            <p>
+              Me considero una persona autodidacta, analítica y comprometida con la mejora continua.
+              Disfruto transformar ideas en soluciones digitales reales, resolver problemas técnicos
+              y fortalecer mis habilidades a través de proyectos prácticos y aprendizaje constante.
+            </p>
+
+            <p>
+              Actualmente continúo desarrollando aplicaciones web y móviles, profundizando en
+              arquitectura de software, bases de datos y análisis de información, con el objetivo de
+              consolidarme profesionalmente como
+              <strong>Desarrollador Web / Full Stack</strong> y
+              <strong>Analista de Datos</strong>, integrando desarrollo tecnológico con análisis estratégico
+              para generar soluciones escalables y orientadas a la toma de decisiones basada en datos.
+            </p>
+      </div>
+      <div class="about-img-wrap">
+        <img src="/assets/foto.jpg" alt="Jireh Aroni" class="about-img">
+        <div class="about-img-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV MODAL -->
+<div class="pdf-modal-overlay hidden" id="cv-modal">
+  <div class="pdf-modal">
+    <div class="pdf-modal-header">
+      <h2>Currículum Vitae — Jireh Aroni</h2>
+      <button class="pdf-modal-close" id="cv-close1">&times;</button>
+    </div>
+    <div class="pdf-modal-body">
+      <iframe src="/assets/cv/CV-Jireh-Aroni.pdf" type="application/pdf" width="100%" height="100%"></iframe>
+    </div>
+    <div class="pdf-modal-footer">
+      <a href="/assets/cv/CV-Jireh-Aroni.pdf" download class="btn-download-modal">⬇ Descargar</a>
+      <a href="/assets/cv/CV-Jireh-Aroni.pdf" target="_blank" class="btn-open-tab">Abrir ↗</a>
+      <button class="btn-close-modal" id="cv-close2">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.home-section {
+  min-height: 100vh; padding: 60px 20px 80px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 100px;
+}
+
+/* HERO */
+.hero-wrapper {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  gap: 26px; max-width: 740px; width: 100%;
+}
+
+/* AVATAR */
+.avatar-container {
+  position: relative; width: 136px; height: 136px;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatar-glow {
+  position: absolute; inset: -5px; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent,#2DD4BF), var(--accent-2,#0F766E), var(--accent-3,#5EEAD4), var(--accent,#2DD4BF));
+  animation: rotate 5s linear infinite;
+  filter: blur(3px); opacity: 0.75;
+  transition: opacity 0.4s, filter 0.4s;
+}
+.avatar-container:hover .avatar-glow { opacity: 1; filter: blur(1px); }
+.avatar-ring { position: absolute; inset: -1px; border-radius: 50%; background: var(--bg); }
+.avatar-img {
+  width: 126px; height: 126px; border-radius: 50%;
+  object-fit: cover; object-position: top center;
+  position: relative; z-index: 1; transition: transform 0.4s;
+}
+.avatar-container:hover .avatar-img { transform: scale(1.04); }
+
+/* BADGE */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px; border-radius: 50px;
+  background: rgba(45,212,191,0.08);
+  border: 1px solid rgba(45,212,191,0.2);
+  color: var(--accent,#2DD4BF);
+  font-size: 0.82rem; font-weight: 500;
+  text-decoration: none; margin-bottom: 2px;
+  transition: opacity 0.5s, background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.hero-badge:hover {
+  background: rgba(45,212,191,0.15);
+  border-color: rgba(45,212,191,0.45);
+  transform: translateY(-2px);
+}
+.badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #22C55E; flex-shrink: 0;
+  animation: pulse-green 2s infinite;
+  box-shadow: 0 0 6px rgba(34,197,94,0.6);
+}
+.badge-arrow { font-size: 0.75rem; opacity: 0.6; transition: opacity 0.2s, transform 0.2s; }
+.hero-badge:hover .badge-arrow { opacity: 1; transform: translate(2px,-2px); }
+
+/* TEXTOS */
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem,5vw,3.6rem);
+  font-weight: 800; line-height: 1.1;
+  color: var(--text-primary); letter-spacing: -0.03em;
+  min-height: 1.2em;
+}
+.hero-subtitle {
+  font-size: 1rem; color: var(--text-secondary);
+  line-height: 1.6; min-height: 1.6em; transition: opacity 0.4s;
+}
+.hero-role {
+  font-size: 1.1rem; font-weight: 500;
+  min-height: 1.6em; transition: opacity 0.4s;
+}
+.role-comment { color: var(--text-muted,#3E3A5A); font-family: monospace; }
+.hero-desc {
+  font-size: 0.95rem; color: var(--text-secondary);
+  line-height: 1.75; max-width: 560px; transition: opacity 0.4s;
+}
+.cur {
+  color: var(--accent,#2DD4BF);
+  animation: blink 0.85s infinite; font-weight: 300;
+}
+
+/* CHIPS */
+.social-row {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 10px;
+  transition: opacity 0.5s;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 10px;
+  font-size: 0.875rem; font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none; color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  cursor: pointer; background-clip: padding-box;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, color 0.25s;
+}
+.chip:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(155,111,245,0.12);
+  color: var(--accent,#2DD4BF);
+}
+.chip-cv {
+  background: var(--accent,#2DD4BF) !important;
+  color: var(--bg,#060D0D) !important;
+  border-color: var(--accent,#2DD4BF) !important;
+  font-weight: 600;
+}
+.chip-cv:hover { opacity: 0.88; transform: translateY(-2px); color: var(--bg,#060D0D) !important; }
+
+/* ABOUT */
+.about-wrapper { width: 100%; max-width: 900px; }
+.sec-label { font-family: monospace; font-size: 0.82rem; color: var(--accent,#2DD4BF); opacity:0.7; margin-bottom:8px; }
+.sec-title {
+  font-family: 'Syne', sans-serif; font-size: 2rem;
+  font-weight: 700; margin-bottom: 28px; color: var(--text-primary);
+}
+.about-card {
+  display: flex; gap: 44px; align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 40px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s;
+}
+.about-card::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg,rgba(155,111,245,0.04),transparent 55%);
+  pointer-events:none;
+}
+.about-card:hover { border-color: var(--border-hover); }
+
+.about-text {
+  flex:1; font-size:0.98rem; line-height:1.8;
+  color: var(--text-secondary);
+  display:flex; flex-direction:column; gap:14px;
+}
+.about-text strong { color: var(--accent-3,#5EEAD4); font-weight:600; }
+
+.about-img-wrap {
+  position:relative; flex-shrink:0;
+  width:210px; height:250px;
+}
+.about-img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:top;
+  border-radius:14px; position:relative; z-index:1;
+  transition:transform 0.4s;
+}
+.about-img-glow {
+  position:absolute; inset:-2px; border-radius:16px;
+  background: linear-gradient(135deg, var(--accent,#2DD4BF), var(--accent-2,#0F766E));
+  opacity:0.35; z-index:0; transition:opacity 0.3s;
+}
+.about-img-wrap:hover .about-img { transform:scale(1.02); }
+.about-img-wrap:hover .about-img-glow { opacity:0.75; }
+
+@media (max-width:768px){
+  .about-card { flex-direction:column-reverse; padding:24px; gap:24px; }
+  .about-img-wrap { width:150px; height:178px; }
+  .home-section { gap:60px; }
+}
+</style>
+
+<script>
+  // Typing más rápido
+  const SPEED = 32;
+  const DEL   = 14;
+  const PAUSE = 1100;
+  const roles = ['Desarrollador Frontend', 'Analista de Datos', 'Full Stack Dev'];
+  let roleIdx = 0;
+
+  function type(text: string, elId: string, delay = 0): Promise<void> {
+    return new Promise(res => {
+      setTimeout(() => {
+        const el = document.getElementById(elId);
+        if (!el) return res();
+        let i = 0;
+        const run = () => { if (i < text.length) { el.textContent += text[i++]; setTimeout(run, SPEED); } else res(); };
+        run();
+      }, delay);
+    });
+  }
+
+  function cycleRoles() {
+    const el = document.getElementById('display-role');
+    if (!el) return;
+    let i = 0;
+    const role = roles[roleIdx];
+    const typeIt = () => { if (i < role.length) { el.textContent += role[i++]; setTimeout(typeIt, SPEED); } else setTimeout(delIt, PAUSE); };
+    const delIt  = () => { if ((el.textContent?.length ?? 0) > 0) { el.textContent = el.textContent!.slice(0,-1); setTimeout(delIt, DEL); } else { roleIdx = (roleIdx+1)%roles.length; setTimeout(cycleRoles, 250); } };
+    typeIt();
+  }
+
+  async function start() {
+    await type('Hola, soy Jireh Aroni', 'display-name', 150);
+    (document.getElementById('cursor-name') as HTMLElement).style.display = 'none';
+    (document.getElementById('hero-badge') as HTMLElement).style.opacity = '1';
+
+    const sub = document.getElementById('subtitle-el') as HTMLElement;
+    const ct  = document.getElementById('cursor-title') as HTMLElement;
+    sub.style.opacity = '1'; ct.style.display = 'inline';
+    await type('Estudiante de Ingeniería de Sistemas Computacionales.', 'display-title');
+    ct.style.display = 'none';
+
+    (document.getElementById('role-el') as HTMLElement).style.opacity = '1';
+    cycleRoles();
+
+    (document.getElementById('desc-el') as HTMLElement).style.opacity = '1';
+    await type('Especializado en interfaces web interactivas con Angular y visualización de datos con Python, SQL y Power BI.', 'display-desc', 80);
+
+    (document.getElementById('social-row') as HTMLElement).style.opacity = '1';
+    setTimeout(() => { (document.getElementById('about-section') as HTMLElement).style.opacity = '1'; }, 250);
+  }
+  start();
+
+  // CV Modal
+  const modal  = document.getElementById('cv-modal')!;
+  const openM  = () => modal.classList.remove('hidden');
+  const closeM = () => modal.classList.add('hidden');
+  document.getElementById('cv-btn')?.addEventListener('click', openM);
+  document.getElementById('cv-close1')?.addEventListener('click', closeM);
+  document.getElementById('cv-close2')?.addEventListener('click', closeM);
+  modal.addEventListener('click', e => { if (e.target === modal) closeM(); });
+</script>

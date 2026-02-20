@@ -1,0 +1,188 @@
+---
+---
+<nav class="navbar" id="navbar">
+  <a href="/" class="logo">
+    <span class="logo-bracket">[</span>JOEL<span class="logo-bracket">]</span>
+  </a>
+
+  <div class="nav-links desktop-menu">
+    <a href="/" class="nav-link" data-path="/">Inicio</a>
+    <a href="/proyectos" class="nav-link" data-path="/proyectos">Proyectos</a>
+    <a href="/habilidades" class="nav-link" data-path="/habilidades">Habilidades</a>
+    <a href="/certificados" class="nav-link" data-path="/certificados">Certificados</a>
+  </div>
+
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="icon-btn" title="Cambiar tema">
+      <span class="material-icons" id="theme-icon">dark_mode</span>
+    </button>
+    <button id="mobile-menu-btn" class="icon-btn mobile-only">
+      <span class="material-icons" id="menu-icon">menu</span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-nav-links">
+    <a href="/" data-path="/"><span class="material-icons">home</span><span>Inicio</span></a>
+    <a href="/proyectos" data-path="/proyectos"><span class="material-icons">work</span><span>Proyectos</span></a>
+    <a href="/habilidades" data-path="/habilidades"><span class="material-icons">star</span><span>Habilidades</span></a>
+    <a href="/certificados" data-path="/certificados"><span class="material-icons">school</span><span>Certificados</span></a>
+  </nav>
+</div>
+
+<style>
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 88%; max-width: 1100px;
+  height: 58px;
+  margin: 18px auto;
+  padding: 0 28px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  border-radius: 14px;
+  /* Inicio: totalmente transparente */
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition:
+    background 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    backdrop-filter 0.45s ease;
+}
+.navbar.scrolled {
+  background: var(--navbar-bg-scrolled);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-color: var(--navbar-border-scrolled);
+  box-shadow: var(--navbar-shadow-scrolled);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--navbar-logo);
+  text-decoration: none;
+  transition: color 0.25s, text-shadow 0.25s;
+}
+.logo-bracket { opacity: 0.55; transition: opacity 0.25s; }
+.logo:hover { color: var(--navbar-logo-hover); text-shadow: 0 0 14px rgba(155,111,245,0.5); }
+.logo:hover .logo-bracket { opacity: 1; }
+
+.desktop-menu { display: flex; gap: 4px; align-items: center; }
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem; font-weight: 500;
+  text-decoration: none; padding: 7px 16px;
+  border-radius: 8px; color: var(--navbar-link);
+  letter-spacing: 0.02em; transition: all 0.25s;
+}
+.nav-link:hover { color: var(--navbar-link-hover); background: var(--navbar-link-hover-bg); }
+.nav-link.active { color: var(--navbar-link-active); background: var(--navbar-link-active-bg); }
+
+.navbar-actions { display: flex; align-items: center; gap: 6px; }
+.icon-btn {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 8px; border-radius: 8px;
+  color: var(--navbar-icon); transition: color 0.25s, background 0.25s;
+}
+.icon-btn:hover { color: var(--navbar-icon-hover); background: var(--navbar-link-hover-bg); }
+.mobile-only { display: none; }
+
+/* Overlay */
+.mobile-overlay {
+  position: fixed; inset: 0;
+  background: rgba(8,8,16,0.65);
+  backdrop-filter: blur(6px);
+  z-index: 998; opacity: 0; visibility: hidden;
+  transition: all 0.3s;
+}
+.mobile-overlay.open { opacity: 1; visibility: visible; }
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  top: 88px; right: 16px;
+  width: calc(100% - 32px); max-width: 280px;
+  background: var(--navbar-bg-scrolled);
+  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--navbar-border-scrolled);
+  border-radius: 14px; box-shadow: var(--navbar-shadow-scrolled);
+  z-index: 999;
+  transform: translateY(-10px); opacity: 0; visibility: hidden;
+  transition: all 0.28s ease;
+}
+.mobile-menu.open { transform: translateY(0); opacity: 1; visibility: visible; }
+
+.mobile-nav-links { display: flex; flex-direction: column; padding: 8px; gap: 2px; }
+.mobile-nav-links a {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 18px; border-radius: 10px;
+  text-decoration: none; color: var(--navbar-link);
+  font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+  transition: all 0.22s;
+}
+.mobile-nav-links a:hover { background: var(--navbar-link-hover-bg); color: var(--navbar-link-hover); }
+.mobile-nav-links a.active { background: var(--navbar-link-active-bg); color: var(--navbar-link-active); }
+
+@media (max-width: 820px) {
+  .navbar { width: 94%; padding: 0 18px; }
+  .desktop-menu { display: none; }
+  .mobile-only { display: flex; }
+}
+</style>
+
+<script>
+  // Scroll → glassmorphism
+  const navbar = document.getElementById('navbar')!;
+  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 30);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // estado inicial
+
+  // Tema
+  const themeBtn  = document.getElementById('theme-toggle')!;
+  const themeIcon = document.getElementById('theme-icon')!;
+  const syncIcon  = () => {
+    themeIcon.textContent = document.documentElement.classList.contains('light-theme')
+      ? 'light_mode' : 'dark_mode';
+  };
+  syncIcon();
+  themeBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light-theme');
+    localStorage.setItem('theme',
+      document.documentElement.classList.contains('light-theme') ? 'light' : 'dark');
+    syncIcon();
+  });
+
+  // Mobile menu
+  const mobileBtn  = document.getElementById('mobile-menu-btn')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  const overlay    = document.getElementById('mobile-overlay')!;
+  const menuIcon   = document.getElementById('menu-icon')!;
+  const close = () => {
+    mobileMenu.classList.remove('open');
+    overlay.classList.remove('open');
+    menuIcon.textContent = 'menu';
+  };
+  mobileBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.contains('open');
+    if (open) { close(); }
+    else { mobileMenu.classList.add('open'); overlay.classList.add('open'); menuIcon.textContent = 'close'; }
+  });
+  overlay.addEventListener('click', close);
+  window.addEventListener('resize', () => { if (window.innerWidth > 820) close(); });
+
+  // Links activos
+  const path = window.location.pathname;
+  document.querySelectorAll('[data-path]').forEach(el => {
+    if (el.getAttribute('data-path') === path) el.classList.add('active');
+  });
+  document.querySelectorAll('.mobile-nav-links a').forEach(a => a.addEventListener('click', close));
+</script>
